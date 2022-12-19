@@ -2,20 +2,20 @@ package com.mongo.practicemongodb.service;
 
 import com.mongo.practicemongodb.model.Expense;
 import com.mongo.practicemongodb.repository.ExpenseRespository;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
 @Service
-@AllArgsConstructor
 public class ExpenseService {
 
-    public  static ExpenseRespository expenseRespository;
+    @Autowired
+    private ExpenseRespository expenseRespository;
 
-    public void  AddExpense(Expense expense){
-        expenseRespository.save(expense);
+    public void  AddExpense(Expense expenseRequest){
+       expenseRespository.save(expenseRequest);
     }
 
     public void  UpdateExpense(Expense expense){
